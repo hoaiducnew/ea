@@ -1,6 +1,7 @@
 package edu.mum.ea.domain;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,9 @@ public class User {
 	private String phone;
 
 	private boolean enabled;
+
+	@Embedded
+	private Address address;
 
 	public long getId() {
 		return id;
@@ -70,5 +74,13 @@ public class User {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 }
