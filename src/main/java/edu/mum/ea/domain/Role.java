@@ -1,9 +1,13 @@
 package edu.mum.ea.domain;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Role {
@@ -12,6 +16,9 @@ public class Role {
 	private int id;
 
 	private String name;
+	
+	@ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+	private Set<User> users;
 
 	public int getId() {
 		return id;
@@ -27,5 +34,13 @@ public class Role {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 }
