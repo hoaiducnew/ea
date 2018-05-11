@@ -1,11 +1,16 @@
 package edu.mum.ea.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -27,6 +32,9 @@ public class User {
 
 	@Embedded
 	private Address address;
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<Comment> comments = new ArrayList<>();
 
 	public long getId() {
 		return id;
@@ -82,5 +90,13 @@ public class User {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 }
