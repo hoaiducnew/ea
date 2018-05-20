@@ -4,7 +4,6 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +17,7 @@ public class Skill {
 
 	@Column(unique = true)
 	private String name;
-	
+
 	@ManyToMany(mappedBy = "skills")
 	private Set<User> users;
 
@@ -33,7 +32,7 @@ public class Skill {
 	public String getName() {
 		return name;
 	}
-	
+
 	public Set<User> getUsers() {
 		return users;
 	}

@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Project {
 	@Id
@@ -29,9 +31,11 @@ public class Project {
 	private String location;
 
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date startDate;
 
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date endDate;
 
 	@Enumerated(EnumType.STRING)
